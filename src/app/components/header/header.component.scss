@@ -1,0 +1,250 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 18px 0;
+  transition: all 0.35s ease;
+  background: transparent;
+
+  &.scrolled {
+    background: rgba(10, 22, 40, 0.96);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 12px 0;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.25);
+  }
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  // --- Logo ---
+  &__logo {
+    flex-shrink: 0;
+    text-decoration: none;
+    z-index: 1100;
+  }
+
+  // --- Navigation ---
+  &__nav {
+    @media (max-width: 900px) {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: min(320px, 85vw);
+      height: 100vh;
+      background: var(--navy-900);
+      padding: 100px 32px 40px;
+      transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 1050;
+      box-shadow: -8px 0 40px rgba(0,0,0,0.3);
+      border-left: 1px solid rgba(255,255,255,0.05);
+
+      &.open {
+        right: 0;
+      }
+    }
+  }
+
+  &__nav-list {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    list-style: none;
+
+    @media (max-width: 900px) {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
+    }
+  }
+
+  &__link {
+    display: block;
+    padding: 8px 14px;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-fast);
+    text-decoration: none;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 4px;
+      left: 14px;
+      right: 14px;
+      height: 2px;
+      background: var(--gold-400);
+      border-radius: 2px;
+      transform: scaleX(0);
+      transition: transform var(--transition-base);
+    }
+
+    &:hover {
+      color: var(--gold-400);
+
+      &::after {
+        transform: scaleX(1);
+      }
+    }
+
+    @media (max-width: 900px) {
+      font-size: 1.125rem;
+      padding: 12px 0;
+      width: 100%;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      border-radius: 0;
+
+      &::after {
+        display: none;
+      }
+    }
+  }
+
+  // --- Actions ---
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-shrink: 0;
+    z-index: 1100;
+  }
+
+  &__cta {
+    font-size: 0.875rem;
+    padding: 10px 20px;
+
+    @media (max-width: 480px) {
+      display: none;
+    }
+  }
+
+  // --- Burger Button ---
+  &__burger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    padding: 8px;
+    background: rgba(255,255,255,0.08);
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(255,255,255,0.12);
+    cursor: pointer;
+    transition: background var(--transition-fast);
+
+    @media (max-width: 900px) {
+      display: flex;
+    }
+
+    &:hover {
+      background: rgba(255,255,255,0.15);
+    }
+
+    span {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      transform-origin: center;
+    }
+
+    &.active {
+      background: rgba(245,166,35,0.15);
+      border-color: rgba(245,166,35,0.3);
+
+      span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+      span:nth-child(2) {
+        opacity: 0;
+        transform: scaleX(0);
+      }
+      span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+      }
+    }
+  }
+
+  // --- Mobile Overlay ---
+  &__overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1040;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    backdrop-filter: blur(2px);
+
+    @media (max-width: 900px) {
+      display: block;
+      pointer-events: none;
+
+      &.visible {
+        opacity: 1;
+        pointer-events: auto;
+      }
+    }
+  }
+}
+
+// --- Logo Badge ---
+.logo-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  &__api {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background: linear-gradient(135deg, var(--gold-400) 0%, var(--red-500) 100%);
+    color: var(--white);
+    font-weight: 800;
+    font-size: 1rem;
+    letter-spacing: 0.05em;
+    border-radius: var(--radius-sm);
+    box-shadow: 0 4px 12px rgba(245, 166, 35, 0.3);
+    flex-shrink: 0;
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.15;
+  }
+
+  &__name {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--white);
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+
+    @media (max-width: 480px) {
+      display: none;
+    }
+  }
+
+  &__sub {
+    font-size: 0.625rem;
+    font-weight: 700;
+    color: var(--gold-400);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+}

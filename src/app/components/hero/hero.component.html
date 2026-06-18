@@ -1,0 +1,122 @@
+<section class="hero" id="inicio" aria-label="Sección principal">
+
+  <!-- Background layers -->
+  <div class="hero__bg">
+    <div class="hero__bg-gradient"></div>
+    <div class="hero__bg-pattern"></div>
+    <div class="hero__bg-glow hero__bg-glow--1"></div>
+    <div class="hero__bg-glow hero__bg-glow--2"></div>
+  </div>
+
+  <div class="container hero__inner">
+
+    <!-- Content -->
+    <div class="hero__content">
+
+      <!-- Badge -->
+      <div class="hero__badge">
+        <span class="hero__badge-dot"></span>
+        Despacho especializado en Extranjería · España
+      </div>
+
+      <!-- Heading -->
+      <h1 class="heading-xl hero__title">
+        Tu nuevo comienzo<br>
+        en <span class="hero__title-highlight">España</span><br>
+        empieza aquí
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="hero__subtitle">
+        Somos el despacho de referencia para inmigrantes en España.
+        Gestionamos <strong>todos los trámites de extranjería</strong> con experiencia,
+        rapidez y total transparencia.
+      </p>
+
+      <!-- Trust pills -->
+      <div class="hero__trust">
+        <div class="trust-pill">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          +500 casos resueltos
+        </div>
+        <div class="trust-pill">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          Consulta Gratuita
+        </div>
+        <div class="trust-pill">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Respuesta en 24h
+        </div>
+      </div>
+
+      <!-- CTAs -->
+      <div class="hero__cta-group">
+        <a href="#consulta" class="btn btn--primary hero__btn-primary" (click)="scrollToForm($event)" id="hero-cta-primary">
+          Iniciar consulta gratuita
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <a href="#servicios" class="btn btn--secondary hero__btn-secondary" (click)="scrollToServices($event)" id="hero-cta-secondary">
+          Ver servicios
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Visual card -->
+    <div class="hero__visual">
+
+      <div class="hero-card">
+        <div class="hero-card__header">
+          <div class="hero-card__avatar">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="7" r="4"/><path d="M20 21a8 8 0 10-16 0"/></svg>
+          </div>
+          <div>
+            <p class="hero-card__name">Milagros Mena</p>
+            <p class="hero-card__role">Abogada Principal · Extranjería</p>
+          </div>
+          <div class="hero-card__badge">
+            <span>Disponible</span>
+          </div>
+        </div>
+
+        <div class="hero-card__divider"></div>
+
+        <p class="hero-card__quote">
+          "Si tienes dudas sobre tu situación en España, podemos ayudarte.
+          Más de <strong>10 años de experiencia</strong> en extranjería nos avalan."
+        </p>
+
+        <div class="hero-card__services">
+          <span>Arraigos</span>
+          <span>Visados</span>
+          <span>Nacionalidad</span>
+          <span>NIE · TIE</span>
+        </div>
+
+        <a href="#consulta" class="hero-card__cta" (click)="scrollToForm($event)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          Escribir ahora
+        </a>
+      </div>
+
+      <!-- Floating stats -->
+      <div class="hero-stat hero-stat--1">
+        <span class="hero-stat__num">98%</span>
+        <span class="hero-stat__label">casos aprobados</span>
+      </div>
+
+      <div class="hero-stat hero-stat--2">
+        <span class="hero-stat__num">12+</span>
+        <span class="hero-stat__label">trámites disponibles</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="hero__scroll">
+    <div class="hero__scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+
+</section>

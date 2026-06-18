@@ -1,0 +1,338 @@
+<section class="section lead-form" id="consulta" aria-labelledby="form-heading">
+  <div class="container">
+
+    <!-- Section header -->
+    <div class="lead-form__header">
+      <span class="section-label">Consulta Gratuita</span>
+      <h2 class="heading-lg" id="form-heading">
+        Cuéntanos tu caso.<br>
+        <span class="text-gold">Te respondemos en menos de 24h.</span>
+      </h2>
+      <p class="lead-form__subtitle">
+        Completa el formulario y nuestro equipo de abogados analizará tu situación de forma confidencial.
+        Sin compromiso y totalmente gratuito.
+      </p>
+    </div>
+
+    <!-- Success Message -->
+    <div class="form-success" *ngIf="submitSuccess" role="alert">
+      <div class="form-success__icon">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <h3>¡Consulta recibida con éxito!</h3>
+      <p>Hemos recibido tu información. Nos pondremos en contacto contigo a la brevedad posible. Revisa tu bandeja de entrada.</p>
+    </div>
+
+    <!-- Form -->
+    <form
+      class="lead-form__form"
+      [formGroup]="form"
+      (ngSubmit)="onSubmit()"
+      *ngIf="!submitSuccess"
+      novalidate
+      aria-label="Formulario de consulta gratuita">
+
+      <!-- ── SECCIÓN 1: Datos de Contacto ── -->
+      <div class="form-section">
+        <div class="form-section__label">
+          <span class="form-section__num">01</span>
+          <span>Datos de contacto</span>
+        </div>
+
+        <div class="form-row form-row--3">
+
+          <div class="form-group">
+            <label class="form-label" for="nombreCompleto">
+              Nombre completo <span class="required" aria-hidden="true">*</span>
+            </label>
+            <input
+              id="nombreCompleto"
+              type="text"
+              class="form-control"
+              formControlName="nombreCompleto"
+              placeholder="Ej: Juan Martínez"
+              autocomplete="name"
+              aria-required="true"
+              [attr.aria-invalid]="isInvalid('nombreCompleto')">
+            <span class="form-error" *ngIf="isInvalid('nombreCompleto')" role="alert">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12" stroke="white" stroke-width="2"/><line x1="12" y1="16" x2="12.01" y2="16" stroke="white" stroke-width="2"/></svg>
+              Introduce tu nombre completo
+            </span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="telefono">
+              WhatsApp / Teléfono <span class="required" aria-hidden="true">*</span>
+            </label>
+            <input
+              id="telefono"
+              type="tel"
+              class="form-control"
+              formControlName="telefono"
+              placeholder="Ej: +34 600 000 000"
+              autocomplete="tel"
+              aria-required="true"
+              [attr.aria-invalid]="isInvalid('telefono')">
+            <span class="form-error" *ngIf="isInvalid('telefono')" role="alert">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12" stroke="white" stroke-width="2"/><line x1="12" y1="16" x2="12.01" y2="16" stroke="white" stroke-width="2"/></svg>
+              Introduce un teléfono válido
+            </span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="email">
+              Correo electrónico <span class="required" aria-hidden="true">*</span>
+            </label>
+            <input
+              id="email"
+              type="email"
+              class="form-control"
+              formControlName="email"
+              placeholder="Ej: juan@correo.com"
+              autocomplete="email"
+              aria-required="true"
+              [attr.aria-invalid]="isInvalid('email')">
+            <span class="form-error" *ngIf="isInvalid('email')" role="alert">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12" stroke="white" stroke-width="2"/><line x1="12" y1="16" x2="12.01" y2="16" stroke="white" stroke-width="2"/></svg>
+              Introduce un email válido
+            </span>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ── SECCIÓN 2: Tu Situación ── -->
+      <div class="form-section">
+        <div class="form-section__label">
+          <span class="form-section__num">02</span>
+          <span>Tu situación actual</span>
+        </div>
+
+        <div class="form-row form-row--2">
+
+          <div class="form-group">
+            <label class="form-label" for="nacionalidad">
+              Nacionalidad <span class="required" aria-hidden="true">*</span>
+            </label>
+            <select
+              id="nacionalidad"
+              class="form-select"
+              formControlName="nacionalidad"
+              aria-required="true"
+              [attr.aria-invalid]="isInvalid('nacionalidad')">
+              <option value="">Selecciona tu nacionalidad</option>
+              <option *ngFor="let n of nacionalidades" [value]="n">{{ n }}</option>
+            </select>
+            <span class="form-error" *ngIf="isInvalid('nacionalidad')" role="alert">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="10"/></svg>
+              Selecciona tu nacionalidad
+            </span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="estatusLegal">
+              Situación legal actual <span class="required" aria-hidden="true">*</span>
+            </label>
+            <select
+              id="estatusLegal"
+              class="form-select"
+              formControlName="estatusLegal"
+              aria-required="true"
+              [attr.aria-invalid]="isInvalid('estatusLegal')">
+              <option *ngFor="let o of estatusOptions" [value]="o.value">{{ o.label }}</option>
+            </select>
+            <span class="form-error" *ngIf="isInvalid('estatusLegal')" role="alert">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="10"/></svg>
+              Selecciona tu situación legal
+            </span>
+          </div>
+
+        </div>
+
+        <!-- Tiempo en España -->
+        <div class="form-group">
+          <label class="form-label">
+            ¿Cuánto tiempo llevas en España? <span class="required" aria-hidden="true">*</span>
+          </label>
+          <div class="radio-group" role="radiogroup" aria-label="Tiempo en España">
+            <label
+              class="radio-item"
+              *ngFor="let op of tiempoOptions"
+              [class.selected]="form.get('tiempoEspana')?.value === op.value">
+              <input
+                type="radio"
+                formControlName="tiempoEspana"
+                [value]="op.value"
+                [attr.aria-label]="op.label">
+              <span class="radio-label">{{ op.label }}</span>
+            </label>
+          </div>
+          <span class="form-error" *ngIf="isInvalid('tiempoEspana')" role="alert">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="10"/></svg>
+            Selecciona una opción
+          </span>
+        </div>
+
+        <!-- Expediente -->
+        <div class="form-group">
+          <label class="form-label">
+            ¿Has tenido algún expediente de expulsión o sanción migratoria? <span class="required" aria-hidden="true">*</span>
+          </label>
+          <div class="radio-group" role="radiogroup" aria-label="Expediente de expulsión">
+            <label
+              class="radio-item"
+              *ngFor="let op of expedienteOptions"
+              [class.selected]="form.get('expediente')?.value === op.value">
+              <input
+                type="radio"
+                formControlName="expediente"
+                [value]="op.value"
+                [attr.aria-label]="op.label">
+              <span class="radio-label">{{ op.label }}</span>
+            </label>
+          </div>
+          <span class="form-error" *ngIf="isInvalid('expediente')" role="alert">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="10"/></svg>
+            Selecciona una opción
+          </span>
+        </div>
+
+      </div>
+
+      <!-- ── SECCIÓN 3: Tu Consulta ── -->
+      <div class="form-section">
+        <div class="form-section__label">
+          <span class="form-section__num">03</span>
+          <span>¿En qué podemos ayudarte?</span>
+        </div>
+
+        <!-- Servicios de interés -->
+        <div class="form-group">
+          <label class="form-label">
+            Trámite(s) de interés <span class="required" aria-hidden="true">*</span>
+            <span class="form-label-hint">(Selecciona todos los que apliquen)</span>
+          </label>
+          <div class="checkbox-grid" formArrayName="serviciosInteres" role="group" aria-label="Trámites de interés">
+            <label
+              class="checkbox-item"
+              *ngFor="let servicio of servicios; let i = index"
+              [class.checked]="isServiceSelected(i)">
+              <input
+                type="checkbox"
+                [formControlName]="i"
+                [attr.aria-label]="servicio"
+                [id]="'servicio-' + i">
+              <span class="checkbox-label">{{ servicio }}</span>
+            </label>
+          </div>
+          <span class="form-error" *ngIf="form.touched && !atLeastOneService()" role="alert">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="10"/></svg>
+            Selecciona al menos un trámite de interés
+          </span>
+        </div>
+
+        <!-- Descripción -->
+        <div class="form-group">
+          <label class="form-label" for="descripcion">
+            Describe brevemente tu caso
+            <span class="form-label-hint">(Opcional)</span>
+          </label>
+          <textarea
+            id="descripcion"
+            class="form-textarea"
+            formControlName="descripcion"
+            rows="3"
+            placeholder="Cuéntanos los detalles de tu situación para que podamos preparar mejor tu consulta...">
+          </textarea>
+        </div>
+
+        <!-- File Upload -->
+        <div class="form-group">
+          <label class="form-label">
+            Adjuntar documento
+            <span class="form-label-hint">(Opcional — Pasaporte, NIE, contrato laboral…)</span>
+          </label>
+
+          <div
+            class="file-upload-area"
+            [class.drag-over]="dragOver"
+            (click)="fileInput.click()"
+            (dragover)="onDragOver($event)"
+            (dragleave)="onDragLeave()"
+            (drop)="onDrop($event)"
+            role="button"
+            tabindex="0"
+            aria-label="Subir documento"
+            (keydown.enter)="fileInput.click()">
+
+            <input
+              #fileInput
+              type="file"
+              accept=".pdf,.jpg,.jpeg,.png"
+              (change)="onFileSelected($event)"
+              aria-hidden="true">
+
+            <div *ngIf="!fileName">
+              <svg class="upload-icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <polyline points="16 16 12 12 8 16"/>
+                <line x1="12" y1="12" x2="12" y2="21"/>
+                <path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/>
+              </svg>
+              <p class="upload-title">Arrastra tu archivo aquí o <strong>haz clic para seleccionar</strong></p>
+              <p class="upload-hint">PDF, JPG, PNG — Máximo 10 MB</p>
+            </div>
+
+            <div class="upload-file-name" *ngIf="fileName">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              {{ fileName }}
+              <button
+                type="button"
+                class="upload-remove"
+                (click)="removeFile(); $event.stopPropagation()"
+                aria-label="Eliminar archivo">✕</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Error general -->
+      <div class="form-alert form-alert--error" *ngIf="submitError" role="alert">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        Ha ocurrido un error al enviar. Por favor, inténtalo de nuevo o escríbenos directamente por WhatsApp.
+      </div>
+
+      <!-- Legal notice -->
+      <p class="form-legal">
+        Al enviar este formulario aceptas nuestra
+        <a href="#" class="form-legal__link">Política de Privacidad</a>.
+        Tus datos son tratados con total confidencialidad según el RGPD.
+      </p>
+
+      <!-- Submit -->
+      <div class="form-submit">
+        <button
+          type="submit"
+          class="btn btn--primary form-submit__btn"
+          id="form-submit-btn"
+          [disabled]="isSubmitting"
+          [attr.aria-busy]="isSubmitting">
+          <span *ngIf="!isSubmitting">
+            Enviar consulta gratuita
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </span>
+          <span *ngIf="isSubmitting" class="spinner-wrap">
+            <span class="spinner" aria-hidden="true"></span>
+            Enviando...
+          </span>
+        </button>
+        <p class="form-submit__note">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          Tus datos están protegidos y encriptados
+        </p>
+      </div>
+
+    </form>
+
+  </div>
+</section>

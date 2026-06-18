@@ -1,0 +1,44 @@
+<header class="header" [class.scrolled]="isScrolled" id="inicio">
+  <div class="container header__inner">
+
+    <!-- Logo -->
+    <a href="#inicio" class="header__logo" (click)="scrollTo('inicio', $event)">
+      <div class="logo-badge">
+        <span class="logo-badge__api">API</span>
+        <div class="logo-badge__text">
+          <span class="logo-badge__name">Asesoría Para Inmigrantes</span>
+          <span class="logo-badge__sub">ABOGADOS</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Nav Desktop -->
+    <nav class="header__nav" [class.open]="menuOpen" aria-label="Navegación principal">
+      <ul class="header__nav-list">
+        <li><a href="#servicios" class="header__link" (click)="scrollTo('servicios', $event)">Servicios</a></li>
+        <li><a href="#nosotros" class="header__link" (click)="scrollTo('nosotros', $event)">Nosotros</a></li>
+        <li><a href="#consulta" class="header__link" (click)="scrollTo('consulta', $event)">Consultar</a></li>
+        <li><a href="#contacto" class="header__link" (click)="scrollTo('contacto', $event)">Contacto</a></li>
+      </ul>
+    </nav>
+
+    <!-- Actions -->
+    <div class="header__actions">
+      <a href="#consulta" class="btn btn--primary header__cta" (click)="scrollTo('consulta', $event)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+        </svg>
+        Consulta Gratuita
+      </a>
+      <button class="header__burger" (click)="toggleMenu()" [class.active]="menuOpen" aria-label="Abrir menú" [attr.aria-expanded]="menuOpen">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+  </div>
+
+  <!-- Mobile overlay -->
+  <div class="header__overlay" [class.visible]="menuOpen" (click)="toggleMenu()"></div>
+</header>
