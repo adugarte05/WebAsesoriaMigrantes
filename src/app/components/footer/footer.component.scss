@@ -1,19 +1,28 @@
 .footer {
   position: relative;
-  background: var(--navy-900);
+  
+  /* Degradado aplicado UNA SOLA VEZ a todo el contenedor */
+  background: linear-gradient(135deg, var(--navy-900) 0%, #06327d 60%, var(--navy-900) 100%);
   color: var(--white);
+  
+  /* Ajuste de espaciado: subimos el footer y compensamos con padding */
+  margin-top: -60px; 
+  padding-top: 60px;
 
-  &__wave {
-    line-height: 0;
-    margin-bottom: -1px;
+  /* Máscara Combinada: La onda arriba (60px) + Un bloque sólido para el resto */
+  -webkit-mask-image: 
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 1440 60' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z' fill='black'/%3E%3C/svg%3E"), 
+    linear-gradient(black, black);
+  -webkit-mask-size: 100% 60px, 100% calc(100% - 59px);
+  -webkit-mask-position: top center, bottom center;
+  -webkit-mask-repeat: no-repeat;
 
-    svg {
-      width: 100%;
-      height: 60px;
-      display: block;
-      fill: var(--gray-50);
-    }
-  }
+  mask-image: 
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 1440 60' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z' fill='black'/%3E%3C/svg%3E"), 
+    linear-gradient(black, black);
+  mask-size: 100% 60px, 100% calc(100% - 59px);
+  mask-position: top center, bottom center;
+  mask-repeat: no-repeat;
 
   &__main {
     padding: 64px 0 48px;
@@ -43,7 +52,7 @@
   &__tagline {
     font-size: 0.9rem;
     line-height: 1.7;
-    color: rgba(255,255,255,0.5);
+    color: rgba(255, 255, 255, 0.7);
     margin-top: 16px;
     margin-bottom: 24px;
     max-width: 320px;
@@ -75,7 +84,7 @@
 
   &__link {
     font-size: 0.9rem;
-    color: rgba(255,255,255,0.55);
+    color: rgba(255, 255, 255, 0.7);
     text-decoration: none;
     transition: color var(--transition-fast);
 
@@ -95,12 +104,12 @@
     align-items: center;
     gap: 10px;
     font-size: 0.9rem;
-    color: rgba(255,255,255,0.55);
+    color: rgba(255, 255, 255, 0.7);
 
     svg { color: var(--gold-400); flex-shrink: 0; }
 
     a {
-      color: rgba(255,255,255,0.55);
+      color: rgba(255, 255, 255, 0.7);
       text-decoration: none;
       transition: color var(--transition-fast);
       &:hover { color: var(--gold-300); }
@@ -119,16 +128,16 @@
     border-radius: var(--radius-full);
     text-decoration: none;
     transition: all var(--transition-base);
-    box-shadow: var(--shadow-gold);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
 
     &:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(245,166,35,0.4);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
     }
   }
 
   &__bottom {
-    border-top: 1px solid rgba(255,255,255,0.07);
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
     padding: 20px 0;
   }
 
@@ -147,7 +156,7 @@
 
   &__copyright {
     font-size: 0.8125rem;
-    color: rgba(255,255,255,0.35);
+    color: rgba(255, 255, 255, 0.35);
   }
 
   &__legal-links {
@@ -158,7 +167,7 @@
 
   &__legal-link {
     font-size: 0.8125rem;
-    color: rgba(255,255,255,0.35);
+    color: rgba(255, 255, 255, 0.35);
     text-decoration: none;
     transition: color var(--transition-fast);
 
@@ -196,7 +205,7 @@
   &__name {
     font-size: 0.8125rem;
     font-weight: 600;
-    color: rgba(255,255,255,0.85);
+    color: rgba(255, 255, 255, 0.85);
   }
 
   &__sub {
@@ -215,16 +224,16 @@
   justify-content: center;
   width: 38px;
   height: 38px;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--radius-sm);
-  color: rgba(255,255,255,0.55);
+  color: rgba(255, 255, 255, 0.55);
   text-decoration: none;
   transition: all var(--transition-base);
 
   &:hover {
-    background: rgba(245,166,35,0.12);
-    border-color: rgba(245,166,35,0.3);
+    background: rgba(245, 166, 35, 0.12);
+    border-color: rgba(245, 166, 35, 0.3);
     color: var(--gold-400);
     transform: translateY(-2px);
   }

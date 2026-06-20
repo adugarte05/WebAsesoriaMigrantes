@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   overflow: hidden;
-  padding-top: 80px;
+  padding-top: 90px;
 
   // --- Background ---
   &__bg {
@@ -66,7 +66,7 @@
     grid-template-columns: 1fr 1fr;
     gap: 64px;
     align-items: center;
-    padding-top: 40px;
+    padding-top: 60px;
     padding-bottom: 40px;
 
     @media (max-width: 1024px) {
